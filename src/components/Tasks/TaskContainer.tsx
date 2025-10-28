@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 
 interface Task {
   _id: string;
-  projectId?: string;
+  projectId?: string | null;
   title: string;
   description: string;
   status: string;
-  dueDate: string;
+  dueDate: string | null;
 }
 
 interface TaskContainerProps {

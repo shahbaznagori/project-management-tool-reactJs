@@ -18,8 +18,8 @@ export const signup = async (data: SignupData) => {
     try{
     console.log("DATA", data)
   const response = await axiosInstance.post("/auth/register", data);
-  console.log("RESsss", response)
-  localStorage.setItem('accessToken', response.data.accessToken);
+  console.log("RESsss", response.data.message.access_token)
+  localStorage.setItem('access_token', response.data.message.access_token);
   return response.data;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

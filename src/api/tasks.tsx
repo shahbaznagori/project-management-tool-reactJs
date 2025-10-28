@@ -4,18 +4,19 @@ interface CreateTaskDto{
     title: string,
     description?: string,
     status?: string,
-    dueDate: Date,
-    projectId: string,
+    dueDate?: Date | null,
+    projectId: string | null,
     userId?: string
 }
 
 interface UpdateTaskDto{
+    _id?: string | null,
     title?: string,
     description?: string,
     status?: string,
-    dueDate?: Date,
-    projectId?: string,
-    userId?: string
+    dueDate?: Date | null,
+    projectId?: string | null,
+    userId?: string | null
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

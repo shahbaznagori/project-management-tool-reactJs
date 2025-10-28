@@ -8,11 +8,12 @@ import { clearTask } from "../../utils/editTaskSlice";
 import FilterStatus from "../FilterStatus";
 
 interface Task {
-  id: number;
+  _id: string;
   title: string;
   description: string;
   status: string;
-  dueDate: string;
+  dueDate: string | null;
+  projectId?: string;
 }
 
 const Tasks = () => {

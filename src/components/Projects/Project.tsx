@@ -82,6 +82,7 @@ const Project = () => {
   if (!filteredProjects || filteredProjects.length === 0) {
     return (
       <div className="p-8 text-center text-gray-600">
+        
         <h1 className="text-xl font-medium">No Projects Available</h1>
       </div>
     );

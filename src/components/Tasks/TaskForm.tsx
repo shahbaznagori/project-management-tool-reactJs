@@ -21,20 +21,21 @@ const taskSchema = Yup.object().shape({
 });
 
 const TaskForm = ({ onSuccess }: TaskFormProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const editTask = useSelector((state: any) => state.editTask.task);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const taskId: string | null = searchParams.get("taskId");
-  const projectId: string | null = searchParams.get("projectId");
+  const projectId = searchParams.get("projectId") ?? null;
 
   const [form, setForm] = useState({
     title: "",
     description: "",
     status: "todo",
-    dueDate: "",
+    dueDate: null,
     taskId: taskId,
-    projectId: projectId,
+    projectId: projectId ?? null,
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -47,7 +48,7 @@ const TaskForm = ({ onSuccess }: TaskFormProps) => {
         title: "",
         description: "",
         status: "todo",
-        dueDate: "",
+        dueDate: null,
         taskId: taskId,
         projectId: projectId,
       });
@@ -75,9 +76,11 @@ const TaskForm = ({ onSuccess }: TaskFormProps) => {
 
       if (onSuccess) onSuccess();
       navigate(`/tasks?id=${projectId}`); // navigate back to task list
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       if (err.inner) {
         const formErrors: { [key: string]: string } = {};
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         err.inner.forEach((e: any) => {
           if (e.path) formErrors[e.path] = e.message;
         });
